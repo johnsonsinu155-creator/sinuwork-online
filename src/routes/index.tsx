@@ -24,7 +24,7 @@ import {
   GraduationCap,
   Star,
 } from "lucide-react";
-import portrait from "@/assets/sinu-portrait.jpg";
+import portrait from "@/assets/sinu-portrait.png";
 import { Nav } from "@/components/portfolio/Nav";
 import { SectionHeading, SectionLabel } from "@/components/portfolio/Section";
 
