@@ -159,15 +159,15 @@ function Hero() {
         </div>
 
         <div className="relative">
-          <div className="relative mx-auto aspect-[4/5] w-full max-w-md">
-            <div className="absolute -inset-6 rounded-[2rem] bg-accent/10 blur-2xl" aria-hidden />
-            <div className="absolute inset-0 rounded-[2rem] border border-border bg-surface p-2 shadow-2xl">
+          <div className="relative mx-auto aspect-square w-full max-w-md">
+            <div className="absolute -inset-6 rounded-full bg-accent/10 blur-2xl" aria-hidden />
+            <div className="absolute inset-0 rounded-full border border-border bg-surface p-2 shadow-2xl">
               <img
                 src={portrait}
                 alt="Sinu Johnson, UI/UX designer"
                 width={1024}
-                height={1280}
-                className="h-full w-full rounded-[1.6rem] object-cover"
+                height={1024}
+                className="h-full w-full rounded-full object-cover"
               />
             </div>
             {/* floating chip */}
