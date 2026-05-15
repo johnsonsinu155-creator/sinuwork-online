@@ -1,5 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
+import { toast } from "sonner";
+
+const EMAILJS_SERVICE_ID = "service_8v01c7l";
+const EMAILJS_TEMPLATE_ID = "template_4zfizcj";
+const EMAILJS_PUBLIC_KEY = "BHCLavUDGpk2lYanI";
 import {
   ArrowDown,
   ArrowUpRight,
