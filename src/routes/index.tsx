@@ -1,5 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
+import { toast } from "sonner";
+
+const EMAILJS_SERVICE_ID = "service_8v01c7l";
+const EMAILJS_TEMPLATE_ID = "template_4zfizcj";
+const EMAILJS_PUBLIC_KEY = "BHCLavUDGpk2lYanI";
 import {
   ArrowDown,
   ArrowUpRight,
@@ -412,7 +418,33 @@ function Projects() {
 
 /* ---------------- CONTACT ---------------- */
 function Contact() {
+  const formRef = useRef<HTMLFormElement>(null);
+  const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!formRef.current) return;
+    setSending(true);
+    try {
+      await emailjs.sendForm(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        formRef.current,
+        { publicKey: EMAILJS_PUBLIC_KEY },
+      );
+      setSent(true);
+      toast.success("Message sent! I'll get back to you soon.");
+      formRef.current.reset();
+      setTimeout(() => setSent(false), 4000);
+    } catch (err) {
+      console.error("EmailJS error:", err);
+      toast.error("Couldn't send message. Please try again or email me directly.");
+    } finally {
+      setSending(false);
+    }
+  };
+
   return (
     <section id="contact" className="border-t border-border/60 py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-6">
@@ -465,11 +497,8 @@ function Contact() {
           </div>
 
           <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              setSent(true);
-              setTimeout(() => setSent(false), 4000);
-            }}
+            ref={formRef}
+            onSubmit={handleSubmit}
             className="rounded-3xl border border-border bg-surface p-8"
           >
             <div className="grid gap-5 sm:grid-cols-2">
@@ -482,6 +511,7 @@ function Contact() {
               </label>
               <textarea
                 required
+                name="message"
                 rows={6}
                 placeholder="Tell me about your project..."
                 className="w-full resize-none rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none transition-colors placeholder:text-muted-foreground focus:border-accent focus:ring-2 focus:ring-accent/30"
@@ -489,9 +519,10 @@ function Contact() {
             </div>
             <button
               type="submit"
-              className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-accent px-6 py-3.5 text-sm font-semibold text-accent-foreground transition-all hover:shadow-[0_0_40px_-5px_var(--accent)] sm:w-auto"
+              disabled={sending}
+              className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-accent px-6 py-3.5 text-sm font-semibold text-accent-foreground transition-all hover:shadow-[0_0_40px_-5px_var(--accent)] disabled:opacity-60 sm:w-auto"
             >
-              {sent ? "Message sent ✓" : "Send Message"}
+              {sending ? "Sending..." : sent ? "Message sent ✓" : "Send Message"}
               <ArrowUpRight className="h-4 w-4" />
             </button>
           </form>
