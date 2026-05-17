@@ -260,7 +260,7 @@ function About() {
                   </span>
                   <div className="text-xs uppercase tracking-wider text-muted-foreground">2023 — 2024</div>
                   <div className="mt-1 font-display text-xl font-semibold">Certified UI/UX Designer</div>
-                  <div className="text-sm text-muted-foreground">Professional UX Design Certificate</div>
+                  <div className="text-sm text-muted-foreground">Professional UI/UX Design Certificate</div>
                 </li>
               </ol>
             </div>
