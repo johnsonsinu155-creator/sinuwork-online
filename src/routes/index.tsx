@@ -258,9 +258,9 @@ function About() {
                   <span className="absolute -left-[33px] grid h-6 w-6 place-items-center rounded-full border border-border bg-background">
                     <Sparkles className="h-3.5 w-3.5 text-muted-foreground" />
                   </span>
-                  <div className="text-xs uppercase tracking-wider text-muted-foreground">Ongoing</div>
-                  <div className="mt-1 font-display text-xl font-semibold">Self-taught UI/UX</div>
-                  <div className="text-sm text-muted-foreground">Design systems, user research, prototyping</div>
+                  <div className="text-xs uppercase tracking-wider text-muted-foreground">2023 — 2024</div>
+                  <div className="mt-1 font-display text-xl font-semibold">UI/UX Design Certification</div>
+                  <div className="text-sm text-muted-foreground">Google UX Design Professional Certificate — Coursera</div>
                 </li>
               </ol>
             </div>
