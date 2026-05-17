@@ -259,7 +259,7 @@ function About() {
                     <Sparkles className="h-3.5 w-3.5 text-muted-foreground" />
                   </span>
                   <div className="text-xs uppercase tracking-wider text-muted-foreground">2023 — 2024</div>
-                  <div className="mt-1 font-display text-xl font-semibold">UI/UX Design Certification</div>
+                  <div className="mt-1 font-display text-xl font-semibold">Certified UI/UX Designer</div>
                   <div className="text-sm text-muted-foreground">Google UX Design Professional Certificate — Coursera</div>
                 </li>
               </ol>
