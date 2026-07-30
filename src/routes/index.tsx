@@ -2,6 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { toast } from "sonner";
+import saasThumb from "@/assets/saas-dashboard-thumb.png.asset.json";
+
 
 const EMAILJS_SERVICE_ID = "service_8v01c7l";
 const EMAILJS_TEMPLATE_ID = "template_4zfizcj";
