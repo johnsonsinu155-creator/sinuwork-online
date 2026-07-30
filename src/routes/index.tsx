@@ -351,31 +351,34 @@ function Services() {
 /* ---------------- PROJECTS ---------------- */
 function Projects() {
   const placeholders = [
-    { title: "Mobile Banking Redesign", tag: "Case Study" },
-    { title: "SaaS Dashboard UX", tag: "Web App" },
-    { title: "E-commerce Experience", tag: "Mobile" },
-    { title: "Design System Kit", tag: "System" },
+    { title: "Mobile Banking Redesign", tag: "Case Study", href: null as string | null },
+    { title: "SaaS Dashboard UX", tag: "Web App", href: "/case-studies/saas-dashboard-ux.html" },
+    { title: "E-commerce Experience", tag: "Mobile", href: null as string | null },
+    { title: "Design System Kit", tag: "System", href: null as string | null },
   ];
   return (
     <section id="projects" className="border-t border-border/60 py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-6">
         <SectionHeading
           eyebrow="Projects"
-          title={<>Selected work — <span className="text-accent">coming soon</span>.</>}
-          description="Live case studies are on the way. Each will document the full design process from problem to interface."
+          title={<>Selected work — <span className="text-accent">case studies</span>.</>}
+          description="Live case studies documenting the full design process from problem to interface."
         />
 
         <div className="grid gap-6 md:grid-cols-2">
-          {placeholders.map((p, i) => (
-            <article
+          {placeholders.map((p, i) => {
+            const Wrapper: React.ElementType = p.href ? "a" : "article";
+            return (
+            <Wrapper
               key={p.title}
-              className="group relative overflow-hidden rounded-3xl border border-border bg-surface p-6 transition-all hover:border-accent/60"
+              {...(p.href ? { href: p.href, target: "_blank", rel: "noreferrer" } : {})}
+              className="group relative block overflow-hidden rounded-3xl border border-border bg-surface p-6 transition-all hover:border-accent/60"
             >
               <div className="relative aspect-[16/10] overflow-hidden rounded-2xl bg-background ring-1 ring-border">
                 <div className="absolute inset-0 grid-bg opacity-60" />
                 <div className="absolute inset-0 grid place-items-center">
                   <div className="rounded-full border border-accent/40 bg-accent/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-accent">
-                    Coming Soon
+                    {p.href ? "View Case Study" : "Coming Soon"}
                   </div>
                 </div>
                 <div
@@ -392,9 +395,11 @@ function Projects() {
                   <ArrowUpRight className="h-4 w-4" />
                 </span>
               </div>
-            </article>
-          ))}
+            </Wrapper>
+            );
+          })}
         </div>
+
 
         <div className="mt-10 rounded-3xl border border-dashed border-border bg-surface/50 p-8">
           <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-accent">
