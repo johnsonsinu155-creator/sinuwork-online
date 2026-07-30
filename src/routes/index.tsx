@@ -353,7 +353,7 @@ function Services() {
 /* ---------------- PROJECTS ---------------- */
 function Projects() {
   const placeholders = [
-    { title: "Mobile Banking Redesign", tag: "Case Study", href: null as string | null, image: null as string | null },
+    { title: "Mobile Banking Redesign", tag: "Case Study", href: "/case-studies/mobile-banking-redesign.html", image: null as string | null },
     { title: "SaaS Dashboard UX", tag: "Web App", href: "/case-studies/saas-dashboard-ux.html", image: saasThumb.url },
     { title: "E-commerce Experience", tag: "Mobile", href: null as string | null, image: null as string | null },
     { title: "Design System Kit", tag: "System", href: null as string | null, image: null as string | null },
