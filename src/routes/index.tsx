@@ -2,6 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { toast } from "sonner";
+import saasThumb from "@/assets/saas-dashboard-thumb.png.asset.json";
+
 
 const EMAILJS_SERVICE_ID = "service_8v01c7l";
 const EMAILJS_TEMPLATE_ID = "template_4zfizcj";
@@ -351,10 +353,10 @@ function Services() {
 /* ---------------- PROJECTS ---------------- */
 function Projects() {
   const placeholders = [
-    { title: "Mobile Banking Redesign", tag: "Case Study", href: null as string | null },
-    { title: "SaaS Dashboard UX", tag: "Web App", href: "/case-studies/saas-dashboard-ux.html" },
-    { title: "E-commerce Experience", tag: "Mobile", href: null as string | null },
-    { title: "Design System Kit", tag: "System", href: null as string | null },
+    { title: "Mobile Banking Redesign", tag: "Case Study", href: null as string | null, image: null as string | null },
+    { title: "SaaS Dashboard UX", tag: "Web App", href: "/case-studies/saas-dashboard-ux.html", image: saasThumb.url },
+    { title: "E-commerce Experience", tag: "Mobile", href: null as string | null, image: null as string | null },
+    { title: "Design System Kit", tag: "System", href: null as string | null, image: null as string | null },
   ];
   return (
     <section id="projects" className="border-t border-border/60 py-24 md:py-32">
@@ -375,12 +377,22 @@ function Projects() {
               className="group relative block overflow-hidden rounded-3xl border border-border bg-surface p-6 transition-all hover:border-accent/60"
             >
               <div className="relative aspect-[16/10] overflow-hidden rounded-2xl bg-background ring-1 ring-border">
-                <div className="absolute inset-0 grid-bg opacity-60" />
+                {p.image ? (
+                  <img
+                    src={p.image}
+                    alt={`${p.title} case study preview`}
+                    loading="lazy"
+                    className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+                  />
+                ) : (
+                  <div className="absolute inset-0 grid-bg opacity-60" />
+                )}
                 <div className="absolute inset-0 grid place-items-center">
-                  <div className="rounded-full border border-accent/40 bg-accent/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-accent">
+                  <div className="rounded-full border border-accent/40 bg-accent/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-accent backdrop-blur-md">
                     {p.href ? "View Case Study" : "Coming Soon"}
                   </div>
                 </div>
+
                 <div
                   className="absolute -right-10 -bottom-10 h-40 w-40 rounded-full bg-accent/15 blur-2xl transition-all group-hover:bg-accent/30"
                   style={{ animationDelay: `${i * 0.2}s` }}
