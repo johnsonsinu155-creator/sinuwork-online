@@ -367,7 +367,7 @@ function Projects() {
 
         <div className="grid gap-6 md:grid-cols-2">
           {placeholders.map((p, i) => {
-            const Wrapper: React.ElementType = p.href ? "a" : "article";
+            const Wrapper: "a" | "article" = p.href ? "a" : "article";
             return (
             <Wrapper
               key={p.title}
